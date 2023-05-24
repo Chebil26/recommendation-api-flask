@@ -1,0 +1,24 @@
+# Ignore Python virtual environment
+myenv/
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.pyc
+
+# Ignore Flask cache and session files
+__pycache__/
+*.pyc
+*.pyo
+instance/
+
+# Ignore data files
+# /static/
+
+# Ignore log files
+*.log
+
+# Ignore environment-specific files
+.env
+
+# Ignore any other files or directories you want to exclude from version control
