@@ -71,9 +71,14 @@ def recommend(book_name):
     return data
 
 
-@app.route('/recommendation', methods=['GET'])
-def get_recommendation():
-    book_name = request.args.get('book_name')
+# @app.route('/recommendation', methods=['GET'])
+# def get_recommendation():
+#     book_name = request.args.get('book_name')
+#     recommendations = recommend(book_name)
+#     return jsonify(recommendations)
+
+@app.route('/recommendation/<book_name>', methods=['GET'])
+def get_recommendation(book_name):
     recommendations = recommend(book_name)
     return jsonify(recommendations)
 
