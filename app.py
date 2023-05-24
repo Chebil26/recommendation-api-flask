@@ -18,12 +18,10 @@ similarity_score = None
 
 
 def load_and_process_data():
-    global books, pt, similarity_score
-
     # Read data frames
-    books = pd.read_csv(books_filepath, usecols=['ISBN', 'Book-Title', 'Book-Author', 'Image-URL-M'], low_memory=False)
-    users = pd.read_csv(users_filepath, usecols=['User-ID'], low_memory=False)
-    ratings = pd.read_csv(ratings_filepath, usecols=['User-ID', 'ISBN', 'Book-Rating'], low_memory=False)
+    books = pd.read_csv(books_filepath, usecols=['ISBN', 'Book-Title', 'Book-Author', 'Image-URL-M'])
+    users = pd.read_csv(users_filepath, usecols=['User-ID'])
+    ratings = pd.read_csv(ratings_filepath, usecols=['User-ID', 'ISBN', 'Book-Rating'])
     
     # Preprocess data frames
     books.drop_duplicates(inplace=True)
@@ -43,8 +41,12 @@ def load_and_process_data():
     final_ratings = filtered_rating[filtered_rating['Book-Title'].isin(famous_books)]
     pt = final_ratings.pivot_table(index='Book-Title', columns='User-ID', values='Book-Rating', fill_value=0)
     similarity_score = cosine_similarity(pt.values)
+    
+    return books, pt, similarity_score
 
-    return
+
+books, pt, similarity_score = load_and_process_data()
+
 
 
 def recommend(book_name):
