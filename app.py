@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from fuzzywuzzy import process
-import os
 
 app = Flask(__name__)
 
