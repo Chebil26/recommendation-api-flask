@@ -80,7 +80,8 @@ def recommend(book_name):
 @app.route('/recommendation/<book_name>', methods=['GET'])
 def get_recommendation(book_name):
     recommendations = recommend(book_name)
-    return jsonify(recommendations)
+    response = {"recommendations": recommendations}
+    return jsonify(response)
 
 
 @app.route('/', methods=['GET'])
