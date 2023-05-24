@@ -77,11 +77,11 @@ def recommend(book_name):
 #     recommendations = recommend(book_name)
 #     return jsonify(recommendations)
 
-@app.route('/recommendation/<book_name>', methods=['GET'])
-def get_recommendation(book_name):
+@app.route('/book_recommendation/<book_name>', methods=['GET'])
+def book_recommendation(book_name):
     recommendations = recommend(book_name)
-    response = {"recommendations": recommendations}
-    return jsonify(response)
+    return jsonify({'recommendations': recommendations})
+
 
 
 @app.route('/', methods=['GET'])
